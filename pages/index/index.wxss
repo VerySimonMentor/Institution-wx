@@ -1,62 +1,69 @@
 /**index.wxss**/
 page {
-  height: 100vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
-}
-.scrollarea {
-  flex: 1;
-  overflow-y: hidden;
+  justify-content: flex-start;
 }
 
-.userinfo {
+.user-confirm{
+  display: inline-flex;
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.link{
+  color: rgb(47, 184, 92);
+}
+
+.logo {
+  display: block;
+  margin: 0 auto;
+  width: 20vw;
+  height: 20vw;
+}
+
+.login {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #aaa;
-  width: 80%;
+  justify-content: center;
+  font-size: 16px;
 }
 
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.login-input {
+  border: 1px solid; /* 设置边框宽度和样式 */
+  border-radius: 40px; /* 设置边框圆角 */
+  border-color: rgb(255, 255, 255); /* 设置边框颜色 */
+  background-color: rgb(236, 235, 235); /* 设置内部填充颜色 */
+  margin-top: 10px;
+  height: 40px; /* 设置输入框的高度 */
+  width: 60vw;
+  padding-left: 10px; /* 设置左内边距，使得 placeholder 文字不紧贴输入框的左边框 */
+  font-size: 16px;
 }
 
-.usermotto {
-  margin-top: 200px;
+.login-button {
+  margin-top: 20px;
+  border-radius: 40px;
+  font-size: 16px;
+  background-color: rgb(47, 184, 92);
+  color: white;
 }
 
-.avatar-wrapper {
-  padding: 0;
-  width: 56px !important;
-  border-radius: 8px;
-  margin-top: 40px;
-  margin-bottom: 40px;
+.login-button-disabled {
+  margin-top: 20px;
+  border-radius: 40px;
+  font-size: 16px;
+  background-color: lightgreen;
+  color: rgb(255, 255, 255);
 }
 
-.avatar {
-  display: block;
-  width: 56px;
-  height: 56px;
-}
-
-.nickname-wrapper {
+.not-login {
   display: flex;
-  width: 100%;
-  padding: 16px;
-  box-sizing: border-box;
-  border-top: .5px solid rgba(0, 0, 0, 0.1);
-  border-bottom: .5px solid rgba(0, 0, 0, 0.1);
-  color: black;
-}
-
-.nickname-label {
-  width: 105px;
-}
-
-.nickname-input {
-  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  text-decoration: underline;
 }

@@ -1,27 +1,25 @@
 <!--index.wxml-->
 <scroll-view class="scrollarea" scroll-y type="list">
   <view class="container">
-    <view class="userinfo">
-      <block wx:if="{{canIUseNicknameComp && !hasUserInfo}}">
-        <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-          <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
-        </button>
-        <view class="nickname-wrapper">
-          <text class="nickname-label">昵称</text>
-          <input type="nickname" class="nickname-input" placeholder="请输入昵称" bind:change="onInputChange" />
-        </view>
-      </block>
-      <block wx:elif="{{!hasUserInfo}}">
-        <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-        <view wx:else> 请使用2.10.4及以上版本基础库 </view>
-      </block>
-      <block wx:else>
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      </block>
+    <view>
+      <image class="logo" src="./images/logo.png"></image>
+    </view>  
+    <view class="login">
+      <text class="login-text">账号密码登录</text>
+      <input class="login-input" placeholder="请输入手机号" bindinput="onInputPhoneNumber"></input>
+      <input class="login-input" placeholder="请输入密码" password="true" bindinput="onInputPassword"></input>
+      <button class="login-button" bind:tap="onTapLogin" disabled="{{isButtonDisabled}}">登录</button>
+      <view class="user-confirm">
+        <checkbox class="confirm-checkbox" bind:tap="onTapConfirm"></checkbox>
+        <text>我已阅读并同意《</text>
+        <navigator class="link" url="https://www.baidu.com">用户协议</navigator>
+        <text>和</text>
+        <navigator class="link">隐私政策</navigator>
+        <text>》</text>
+      </view>
     </view>
-    <view class="usermotto">
-      <text class="user-motto">{{motto}}</text>
-    </view>
+  </view>
+  <view class="not-login">
+    <text bind:tap="onTapNotLogin">暂不登录</text>
   </view>
 </scroll-view>

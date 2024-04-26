@@ -1,49 +1,66 @@
 // index.js
-const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {
-      avatarUrl: defaultAvatarUrl,
-      nickName: '',
-    },
-    hasUserInfo: false,
-    canIUseGetUserProfile: wx.canIUse('getUserProfile'),
-    canIUseNicknameComp: wx.canIUse('input.type.nickname'),
+    loginButton: 'login-button-disabled',
+    isButtonDisabled: true,
+    inputPhoneNumber: '',
+    inputPassword: '',
   },
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onChooseAvatar(e) {
-    const { avatarUrl } = e.detail
-    const { nickName } = this.data.userInfo
+  onTapConfirm(e) {
     this.setData({
-      "userInfo.avatarUrl": avatarUrl,
-      hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl,
-    })
+      isButtonDisabled: !this.data.isButtonDisabled,
+    });
+    if (this.data.isButtonDisabled) {
+      this.setData({
+        loginButton: 'login-button-disabled',
+      });
+    }
+    else {
+      this.setData({
+        loginButton: 'login-button',
+      });
+    }
   },
-  onInputChange(e) {
-    const nickName = e.detail.value
-    const { avatarUrl } = this.data.userInfo
+  onTapLogin(e) {
+    var data = {
+      phoneNumber: this.data.inputPhoneNumber,
+      password: this.data.inputPassword,
+    };
+    if (data.phoneNumber && data.password) {
+      wx.request({
+        url: 'http://81.70.163.28:9001/login', // 你的服务器地址
+        method: 'POST',
+        data: {
+          phoneNumber: this.data.inputPhoneNumber,
+          password: this.data.inputPassword,
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success (res) {
+          console.log(res.data)
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '用户名或密码为空',
+        icon: 'none',
+        duration: 2000
+      });
+    }
+  },
+  onTapNotLogin(e) {
+    console.log('not login');
+  },
+  onInputPhoneNumber(e) {
     this.setData({
-      "userInfo.nickName": nickName,
-      hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl,
-    })
+      inputPhoneNumber: e.detail.value,
+    });
   },
-  getUserProfile(e) {
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        console.log(res)
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    })
+  onInputPassword(e) {
+    this.setData({
+      inputPassword: e.detail.value,
+    });
   },
 })
