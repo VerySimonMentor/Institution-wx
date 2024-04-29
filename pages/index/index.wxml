@@ -41,4 +41,7 @@
     </view>
     <image class="logo" src="./images/logo.png" bind:tap="onTapInputLogin"></image>
   </view>
+  <view class="not-login">
+    <text bind:tap="onTapNotLogin">暂不登录</text>
+  </view>
 </view>

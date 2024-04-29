@@ -1,0 +1,12 @@
+<view wx:if="{{pageIndex==4}}">
+  <view wx:if="{{loginState==0}}">
+    <view class="user-info-container">
+      <image class="user-image" src="/pages/index/images/logo.png"></image>
+      <text class="text" bind:tap="onTapLogin">立即登录</text>
+    </view>
+    <text class="text">我的工具</text>
+    <view class="user-tools">
+    
+    </view>
+  </view>
+</view>

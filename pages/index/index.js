@@ -52,7 +52,19 @@ Page({
     }
   },
   onTapNotLogin(e) {
-    console.log('not login');
+    console.log('onTapNotLogin');
+    wx.redirectTo({
+      url: '/pages/home/home?loginState=0&phoneNumber=',
+      success: function(res){
+        // success
+      },
+      fail: function(err) {
+        console.log('fail', err);
+      },
+      complete: function() {
+        // complete
+      }
+    });
   },
   onInputPhoneNumber(e) {
     this.setData({
