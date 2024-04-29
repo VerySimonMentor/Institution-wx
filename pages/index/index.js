@@ -6,6 +6,7 @@ Page({
     isButtonDisabled: true,
     inputPhoneNumber: '',
     inputPassword: '',
+    isFastLogin: 2,
   },
   onTapConfirm(e) {
     this.setData({
@@ -61,6 +62,18 @@ Page({
   onInputPassword(e) {
     this.setData({
       inputPassword: e.detail.value,
+    });
+  },
+  onTapInputLogin(e) {
+    this.setData({
+      isFastLogin: 1,
+      isButtonDisabled: true,
+    });
+  },
+  onTapFastLogin(e) {
+    this.setData({
+      isFastLogin: 2,
+      isButtonDisabled: true,
     });
   },
 })
