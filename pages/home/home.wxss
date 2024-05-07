@@ -28,3 +28,18 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(4, 1fr);
 }
+
+.footer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+}
+
+.activeFoot {
+    color: #07c160;
+}

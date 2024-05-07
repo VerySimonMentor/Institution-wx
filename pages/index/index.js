@@ -88,4 +88,22 @@ Page({
       isButtonDisabled: true,
     });
   },
+  onGetPhoneNumber(e) {
+    console.log(e.detail.errMsg)
+    console.log(e.detail.iv)
+    console.log(e.detail.encryptedData)
+
+    wx.redirectTo({
+      url: '/pages/home/home?loginState=1&phoneNumber=',
+      success: function(res){
+        // success
+      },
+      fail: function(err) {
+        console.log('fail', err);
+      },
+      complete: function() {
+        // complete
+      }
+    });
+  }
 })

@@ -18,4 +18,24 @@ Page({
       },
     })
   },
+  onTapHome(e) {
+    this.setData({
+      pageIndex: 1,
+    });
+  },
+  onTapStudent(e) {
+    this.setData({
+      pageIndex: 2,
+    });
+  },
+  onTapMessage(e) {
+    this.setData({
+      pageIndex: 3,
+    });
+  },
+  onTapMy(e) {
+    this.setData({
+      pageIndex: 4,
+    });
+  },
 })
