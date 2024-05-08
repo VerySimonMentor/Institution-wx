@@ -30,7 +30,7 @@ Page({
     };
     if (data.phoneNumber && data.password) {
       wx.request({
-        url: 'http://81.70.163.28:9001/login', // 你的服务器地址
+        url: 'https://spark.verysimon.com:9001/', // 你的服务器地址
         method: 'POST',
         data: {
           phoneNumber: this.data.inputPhoneNumber,
@@ -92,6 +92,7 @@ Page({
     console.log(e.detail.errMsg)
     console.log(e.detail.iv)
     console.log(e.detail.encryptedData)
+    console.log(e)
 
     wx.redirectTo({
       url: '/pages/home/home?loginState=1&phoneNumber=',
@@ -107,3 +108,17 @@ Page({
     });
   }
 })
+
+function requestLogin(data) {
+  wx.request({
+    url: 'https://spark.verysimon.com:9001/wx/login', // 你的服务器地址
+    method: 'POST',
+    data: JSON.stringify(data),
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success (res) {
+      return res.loginLevel;
+    }
+  })
+}
