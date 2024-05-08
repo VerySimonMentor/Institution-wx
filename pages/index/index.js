@@ -30,7 +30,7 @@ Page({
     };
     if (data.phoneNumber && data.password) {
       wx.request({
-        url: 'https://spark.verysimon.com:9001/', // 你的服务器地址
+        url: 'https://spark.verysimon.com:9001/wx/login', // 你的服务器地址
         method: 'POST',
         data: {
           phoneNumber: this.data.inputPhoneNumber,
@@ -41,6 +41,9 @@ Page({
         },
         success (res) {
           console.log(res.data)
+        },
+        fail (res) {
+          console.log(res)
         }
       })
     } else {
@@ -89,23 +92,30 @@ Page({
     });
   },
   onGetPhoneNumber(e) {
-    console.log(e.detail.errMsg)
-    console.log(e.detail.iv)
-    console.log(e.detail.encryptedData)
-    console.log(e)
-
-    wx.redirectTo({
-      url: '/pages/home/home?loginState=1&phoneNumber=',
-      success: function(res){
-        // success
+    wx.request({
+      url: 'https://spark.verysimon.com:9001/wx/login?code=' + e.detail.code, // 你的服务器地址
+      method: 'GET',
+      header: {
+        'content-type': 'application/json' // 默认值
       },
-      fail: function(err) {
-        console.log('fail', err);
+      success (res) {
+        wx.redirectTo({
+          url: '/pages/home/home?loginState=1&phoneNumber=',
+          success: function(res){
+            // success
+          },
+          fail: function(err) {
+            console.log('fail', err);
+          },
+          complete: function() {
+            // complete
+          }
+        });
       },
-      complete: function() {
-        // complete
+      fail (res) {
+        console.log(res)
       }
-    });
+    })
   }
 })
 
