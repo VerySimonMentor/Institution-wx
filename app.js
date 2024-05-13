@@ -1,19 +1,24 @@
 // app.js
 App({
   onLaunch() {
-    // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+    const tocken = wx.getStorageSync('tocken');
+    wx.request({
+      url: this.globalData.domain + '/wx/check?tocken=' + tocken,
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      success: function(res){
+        console.log('success');
+      },
+      fail: function() {
+        console.log('fail');
+        
+      },
+      complete: function() {
+        // complete
       }
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    domain: 'https://spark.verysimon.com:9001',
   }
 })

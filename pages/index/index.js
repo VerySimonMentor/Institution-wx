@@ -55,7 +55,6 @@ Page({
     }
   },
   onTapNotLogin(e) {
-    console.log('onTapNotLogin');
     wx.redirectTo({
       url: '/pages/home/home?loginState=0&phoneNumber=',
       success: function(res){
@@ -99,6 +98,7 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success (res) {
+        wx.setStorageSync('isLogin', true);
         wx.redirectTo({
           url: '/pages/home/home?loginState=1&phoneNumber=',
           success: function(res){
