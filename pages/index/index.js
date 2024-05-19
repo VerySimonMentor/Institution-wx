@@ -27,25 +27,34 @@ Page({
     var data = {
       phoneNumber: this.data.inputPhoneNumber,
       password: this.data.inputPassword,
+      loginCode: '',
     };
     if (data.phoneNumber && data.password) {
-      wx.request({
-        url: 'https://spark.verysimon.com:9001/wx/login', // 你的服务器地址
-        method: 'POST',
-        data: {
-          phoneNumber: this.data.inputPhoneNumber,
-          password: this.data.inputPassword,
+      wx.login({
+        success: function(res){
+          data.loginCode = res.code;
+          wx.request({
+            url: 'https://spark.verysimon.com:9001/wx/login', // 你的服务器地址
+            method: 'POST',
+            data: JSON.stringify(data),
+            header: {
+              'content-type': 'application/json' // 默认值
+            },
+            success (res) {
+              console.log(res.data)
+            },
+            fail (res) {
+              console.log(res)
+            }
+          });
         },
-        header: {
-          'content-type': 'application/json' // 默认值
+        fail: function() {
+          // fail
         },
-        success (res) {
-          console.log(res.data)
-        },
-        fail (res) {
-          console.log(res)
+        complete: function() {
+          // complete
         }
-      })
+      });
     } else {
       wx.showToast({
         title: '用户名或密码为空',
@@ -56,7 +65,7 @@ Page({
   },
   onTapNotLogin(e) {
     wx.redirectTo({
-      url: '/pages/home/home?loginState=0&phoneNumber=',
+      url: '/pages/home/home?loginState=0',
       success: function(res){
         // success
       },
@@ -91,44 +100,28 @@ Page({
     });
   },
   onGetPhoneNumber(e) {
-    wx.request({
-      url: 'https://spark.verysimon.com:9001/wx/login?code=' + e.detail.code, // 你的服务器地址
-      method: 'GET',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success (res) {
-        wx.setStorageSync('isLogin', true);
-        wx.redirectTo({
-          url: '/pages/home/home?loginState=1&phoneNumber=',
-          success: function(res){
-            // success
+    wx.login({
+      success: function(res) {
+        wx.request({
+          url: 'https://spark.verysimon.com:9001/wx/login?code=' + e.detail.code + "&loginCode=" + res.code, // 你的服务器地址
+          method: 'GET',
+          header: {
+            'content-type': 'application/json' // 默认值
           },
-          fail: function(err) {
-            console.log('fail', err);
+          success (res) {
+            wx.setStorageSync('loginTocken', res.data.loginTocken);
+            wx.redirectTo({
+              url: '/pages/home/home?loginState=' + res.data.loginState,
+            });
           },
-          complete: function() {
-            // complete
+          fail (res) {
+            console.log(res)
           }
-        });
+        })
       },
-      fail (res) {
-        console.log(res)
+      fail: function(res) {
+        console.log('login fail', res);
       }
-    })
+    });
   }
 })
-
-function requestLogin(data) {
-  wx.request({
-    url: 'https://spark.verysimon.com:9001/wx/login', // 你的服务器地址
-    method: 'POST',
-    data: JSON.stringify(data),
-    header: {
-      'content-type': 'application/json' // 默认值
-    },
-    success (res) {
-      return res.loginLevel;
-    }
-  })
-}

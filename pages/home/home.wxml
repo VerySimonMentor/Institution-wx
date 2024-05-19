@@ -20,4 +20,19 @@
     
     </view>
   </view>
+
+  <view wx:elif="{{loginState!=0&&noPassword}}">
+    <text>请设置密码</text>
+    <input placeholder="请输入密码" password="true" bindinput="onInputPassword"></input>
+    <input placeholder="请再次输入密码" password="true" bindinput="onInputPasswordAgain"></input>
+    <button bind:tap="onTapSetPassword">确定</button>
+  </view>
+
+  <view wx:elif="{{loginState==1}}">
+    <view class="user-info-container">
+      <image class="user-image" src="/pages/index/images/logo.png"></image>
+      <text class="text" bind:tap="onTapLogin">{{phoneNumber}}</text>
+    </view>
+  </view>
+    
 </view>

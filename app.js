@@ -1,24 +1,24 @@
 // app.js
 App({
   onLaunch() {
-    const tocken = wx.getStorageSync('tocken');
+    const tocken = wx.getStorageSync('loginTocken');
     wx.request({
-      url: this.globalData.domain + '/wx/check?tocken=' + tocken,
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      url: this.globalData.domain + '/wx/checkTocken?loginTocken=' + tocken,
+      method: 'GET',
       success: function(res){
-        console.log('success');
-      },
-      fail: function() {
-        console.log('fail');
-        
-      },
-      complete: function() {
-        // complete
+        if (res.data.state) {
+          wx.redirectTo({
+            url: '/pages/home/home?loginState=' + res.data.loginState,
+          });
+        } else {
+          wx.redirectTo({
+            url: '/pages/index/index',
+          });
+        }
       }
     })
   },
   globalData: {
-    userInfo: null,
     domain: 'https://spark.verysimon.com:9001',
   }
 })
