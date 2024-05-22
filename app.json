@@ -1,7 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/home/home"
+    "pages/home/home",
+    "pages/home/toolPages/password/password",
+    "pages/home/toolPages/feedback/feedback",
+    "pages/home/toolPages/contactUs/contactUs"
   ],
   "window": {
     "navigationBarTextStyle": "black",

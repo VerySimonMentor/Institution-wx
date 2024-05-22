@@ -2,7 +2,7 @@ Page({
   data: {
     loginState: 0,
     pageIndex: 4,
-    noPassWord: false,
+    noPassword: false,
     inputPassword: '',
     inputPasswordAgain: '',
     phoneNumber: '',
@@ -16,16 +16,16 @@ Page({
       const tocken = wx.getStorageSync('loginTocken');
       const that = this;
       wx.request({
-        url: app.globalData.domain + '/wx/getUserInfo?loginTocken=' + tocken,
+        url: app.globalData.domain + '/wx/checkPassword?loginTocken=' + tocken,
         method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
         success: function(res){
-          if (res.data.noPassWord) {
+          if (res.data.noPassword) {
             that.setData({
-              noPassWord: true,
+              noPassword: true,
             });
           } else {
             that.setData({
-              noPassWord: false,
+              noPassword: false,
               phoneNumber: res.data.phoneNumber,
             });
           }
@@ -85,16 +85,17 @@ Page({
     const that = this;
     var md5 = require('../../utils/md5.js');
     var hashedPassword = md5(this.data.inputPassword);
-    data = {
+    var data = {
       loginTocken: tocken,
       password: hashedPassword,
     }
     wx.request({
-      url: app.globalData.domain + '/wx/setPassword',
+      url: app.globalData.domain + '/wx/initPassword',
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       headers: {
         'Content-Type': 'application/json',
       },
+      data: JSON.stringify(data),
       success: function(res){
         if (res.data.state) {
           that.setData({
@@ -110,4 +111,40 @@ Page({
       }
     });
   },
+  onTapResetPassword(e) {
+    wx.navigateTo({
+      url: '/pages/home/toolPages/password/password',
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        console.log('fail');
+      },
+    })
+  },
+  onTapQuitAccount(e) {
+    wx.removeStorageSync('loginTocken');
+    wx.redirectTo({
+      url: '/pages/index/index',
+      success: function(res){
+        // success
+      },
+    });
+  },
+  onTapFeedback(e) {
+    wx.navigateTo({
+      url: '/pages/home/toolPages/feedback/feedback',
+      success: function(res){
+        // success
+      },
+    });
+  },
+  onTapContactUs(e) {
+    wx.navigateTo({
+      url: '/pages/home/toolPages/contactUs/contactUs',
+      success: function(res){
+        // success
+      },
+    });
+  }
 })

@@ -21,11 +21,11 @@
     </view>
   </view>
 
-  <view wx:elif="{{loginState!=0&&noPassword}}">
-    <text>请设置密码</text>
-    <input placeholder="请输入密码" password="true" bindinput="onInputPassword"></input>
-    <input placeholder="请再次输入密码" password="true" bindinput="onInputPasswordAgain"></input>
-    <button bind:tap="onTapSetPassword">确定</button>
+  <view class="password-view" wx:elif="{{loginState!=0&&noPassword}}">
+    <text class="text-style">请设置密码</text>
+    <input class="input-style" placeholder="请输入密码" password="true" bindinput="onInputPassword"></input>
+    <input class="input-style" placeholder="请再次输入密码" password="true" bindinput="onInputPasswordAgain"></input>
+    <button class="button-style" bind:tap="onTapSetPassword">确定</button>
   </view>
 
   <view wx:elif="{{loginState==1}}">
@@ -33,6 +33,12 @@
       <image class="user-image" src="/pages/index/images/logo.png"></image>
       <text class="text" bind:tap="onTapLogin">{{phoneNumber}}</text>
     </view>
+    <text class="text">我的工具</text>
+    <view class="user-tools">
+      <text class="text" bind:tap="onTapFeedback">意见反馈</text>
+      <text class="text" bind:tap="onTapResetPassword">重置密码</text>
+      <text class="text" bind:tap="onTapQuitAccount">账号退出</text>
+      <text class="text" bind:tap="onTapContactUs">联系我们</text>
+    </view>
   </view>
-    
 </view>
