@@ -11,24 +11,40 @@
 </scroll-view>
 
 <view class="search-container">
-  <input type="text" class="search-input" bindconfirm="onConfirmSchoolName" bindblur="onConfirmSchoolName" placeholder="请输入院校名称" />
+  <input type="text" class="search-input" bindconfirm="onConfirmSchoolName" bindblur="onConfirmSchoolName" bindInput="onInputSearchContent" placeholder="请输入院校名称" />
   <button class="filter-button" bindtap="onTapFilterMenu">筛选 ▼</button>
 </view>
 
 <view wx:if="{{showFilterMenu}}" class="filter-menu">
   <view class="module">
     <text class="module-title">省份</text>
-    <view wx:for="{{provinceList}}" wx:for-index="provinceListIndex" wx:key="*this" data-index="{{provinceListIndex}}" class="item {{selectedProvinceIndex == idx ? 'item-selected' : ''}}" bindtap="onTapProvince">
-      <text class="item-text">{{item}}</text>
+    <view class="all-item-container">
+      <view wx:for="{{provinceList}}" wx:for-index="provinceListIndex" wx:key="*this" data-index="{{provinceListIndex}}" bindtap="onTapProvince">
+        <view wx:if="{{allProvinceMap[provinceListIndex]}}" class="item-selected">
+          <text class="item-text">{{item.chiName}}</text>
+        </view>
+        <view wx:else class="item">
+          <text class="item-text">{{item.chiName}}</text>
+        </view>
+      </view>
     </view>
-    <text class="module-title">学校类型</text>
-    <view wx:for="{{schoolTypeList}}" wx:for-index="schoolTypeListIndex" wx:key="*this" data-index="{{schoolTypeListIndex}}" class="item {{selectedSchoolTypeIndex == idx ? 'item-selected' : ''}}" bindtap="onTapSchoolType">
-      <text class="item-text">{{item}}</text>
-    </view>
-  </view>
 
-  <view class="button-container">
-    <button class="cancel-button" bindtap="onTapCancel">取消</button>
-    <button class="confirm-button" bindtap="onTapConfirm">确认</button>
+    <text class="module-title">学校类型</text>
+    <view class="all-item-container">
+      <view wx:for="{{schoolTypeList}}" wx:for-index="schoolTypeListIndex" wx:key="*this" data-index="{{schoolTypeListIndex}}" bindtap="onTapSchoolType">
+        <view wx:if="{{allSchoolTypeMap[schoolTypeListIndex]}}" >
+          <text class="item-selected">{{item.schoolTypeName}}</text>
+        </view>
+        <view wx:else>
+          <text class="item">{{item.schoolTypeName}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="button-container">
+      <view class="action-buttons">
+        <button class="action-button.cancel" bindtap="onTapCancel">取消</button>
+        <button class="action-button.confirm" bindtap="onTapConfirm">确认</button>
+      </view>
+    </view>
   </view>
 </view>

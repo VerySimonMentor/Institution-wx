@@ -45,36 +45,70 @@
     background-color: transparent;
 }
 
+.module-title{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10rpx;
+}
+
+.all-item-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10rpx;
+}
+
 .item {
+    display: inline-flex;
+    padding: 10rpx;
+    border-radius: 10rpx;
+    margin: 10rpx;
+    display: inline-flex;
     background-color: gray;
-    border-radius: 10px;
 }
 
 .item-selected {
+    display: inline-flex;
+    padding: 10rpx;
+    border-radius: 10rpx;
+    margin: 10rpx;
     background-color: green;
     color: white;
 }
 
-.button-container {
+/* 设置action按钮，即确认和取消 */
+.action-buttons {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
+
+    padding: 20rpx;
+}  
+
+.action-button{
+    display: inline-block;
+    width: 20rpx;
+    text-align: center;
+    margin: 10rpx;
+    padding: 20rpx;
+    border-radius: 20rpx;
+    font-size: 28rpx;
 }
 
-.cancel-button {
-    height: 30px;
-    border-radius: 10px;
-    color: white;
+.action-button.cancel {
     background-color: gray;
-    font-size: 14px;
-    align-items: center;
+    color: white;
+    margin-right: 70rpx;
+    margin-left: 70rpx;
 }
 
-.confirm-button {
-    height: 30px;
-    border-radius: 10px;
-    color: white;
+.action-button.confirm {
     background-color: green;
-    font-size: 14px;
-    align-items: center;
+    color: white;
+    margin-left: 70rpx;
+    margin-right: 70rpx;
 }
+/* ation按钮设置结束 */

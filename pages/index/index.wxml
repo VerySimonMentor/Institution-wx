@@ -34,7 +34,9 @@
     <view class="user-confirm">
       <checkbox class="confirm-checkbox" bind:tap="onTapConfirm"></checkbox>
       <text>我已阅读并同意《</text>
-      <navigator class="link" url="/pages/index/protocol/protocol?filePath=/pages/index/word/userProtocolAndPolicy.docx">用户协议和隐私政策</navigator>
+      <navigator class="link" url="https://www.baidu.com">用户协议</navigator>
+      <text>和</text>
+      <navigator class="link">隐私政策</navigator>
       <text>》</text>
     </view>
     <image class="logo" src="./images/logo.png" bind:tap="onTapInputLogin"></image>
