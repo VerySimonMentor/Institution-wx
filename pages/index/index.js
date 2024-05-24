@@ -41,11 +41,19 @@ Page({
               'content-type': 'application/json' // 默认值
             },
             success (res) {
-              console.log(res.data)
+              if (res.statusCode != 200) {
+                wx.showModal({
+                  title: '提示',
+                  content: '用户名或密码错误',
+                  showCancel: false,
+                })
+                return;
+              }
+              wx.setStorageSync('loginTocken', res.data.loginTocken);
+              wx.redirectTo({
+                url: '/pages/home/home?loginState=' + res.data.loginState,
+              });
             },
-            fail (res) {
-              console.log(res)
-            }
           });
         },
         fail: function() {
@@ -57,7 +65,7 @@ Page({
       });
     } else {
       wx.showToast({
-        title: '用户名或密码为空',
+        title: '请输入用户名和密码',
         icon: 'none',
         duration: 2000
       });
@@ -83,8 +91,11 @@ Page({
     });
   },
   onInputPassword(e) {
+    var password = e.detail.value;
+    var md5 = require('../../utils/md5.js');
+    var hashedPassword = md5(password);
     this.setData({
-      inputPassword: e.detail.value,
+      inputPassword: hashedPassword,
     });
   },
   onTapInputLogin(e) {
@@ -100,6 +111,9 @@ Page({
     });
   },
   onGetPhoneNumber(e) {
+    if (e.detail.errMsg === 'getPhoneNumber:fail user deny') {
+      return
+    }
     wx.login({
       success: function(res) {
         wx.request({

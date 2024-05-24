@@ -1,0 +1,34 @@
+<scroll-view class="country-scroll" scroll-x="true">
+  <view wx:for="{{countryList}}" wx:for-index="countryListIndex" wx:key="*this" data-index="{{countryListIndex}}" class="country-item" bindtap="onTapCountry">
+    <view wx:if="{{selectedCountryIndex==countryListIndex}}" class="country-item-selected">
+      <text class="country-name">{{item}}</text>
+    </view>
+
+    <view wx:else class="country-item-unselected">
+      <text class="country-name">{{item}}</text>
+    </view>
+  </view>
+</scroll-view>
+
+<view class="search-container">
+  <input type="text" class="search-input" bindconfirm="onConfirmSchoolName" bindblur="onConfirmSchoolName" placeholder="请输入院校名称" />
+  <button class="filter-button" bindtap="onTapFilterMenu">筛选 ▼</button>
+</view>
+
+<view wx:if="{{showFilterMenu}}" class="filter-menu">
+  <view class="module">
+    <text class="module-title">省份</text>
+    <view wx:for="{{provinceList}}" wx:for-index="provinceListIndex" wx:key="*this" data-index="{{provinceListIndex}}" class="item {{selectedProvinceIndex == idx ? 'item-selected' : ''}}" bindtap="onTapProvince">
+      <text class="item-text">{{item}}</text>
+    </view>
+    <text class="module-title">学校类型</text>
+    <view wx:for="{{schoolTypeList}}" wx:for-index="schoolTypeListIndex" wx:key="*this" data-index="{{schoolTypeListIndex}}" class="item {{selectedSchoolTypeIndex == idx ? 'item-selected' : ''}}" bindtap="onTapSchoolType">
+      <text class="item-text">{{item}}</text>
+    </view>
+  </view>
+
+  <view class="button-container">
+    <button class="cancel-button" bindtap="onTapCancel">取消</button>
+    <button class="confirm-button" bindtap="onTapConfirm">确认</button>
+  </view>
+</view>

@@ -1,0 +1,80 @@
+.country-scroll {
+    white-space: nowrap;
+}
+
+.country-item {
+    display: inline-block;
+    padding: 10px;
+}
+
+.country-item-selected {
+    color: rgb(123, 187, 29);
+    padding-bottom: 5px;
+    border-bottom: 2px solid rgb(123, 187, 29);
+    font-size: 20px;
+    font-weight: 550;
+    margin-left: 10px;
+}
+
+.country-item-unselected {
+    font-size: 20px;
+    font-weight: 550;
+    margin-left: 10px;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+    border-radius: 20px;
+    background-color: #f3f3f3;
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+.filter-button {
+    margin-left: 10px;
+    background-color: transparent;
+}
+
+.item {
+    background-color: gray;
+    border-radius: 10px;
+}
+
+.item-selected {
+    background-color: green;
+    color: white;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.cancel-button {
+    height: 30px;
+    border-radius: 10px;
+    color: white;
+    background-color: gray;
+    font-size: 14px;
+    align-items: center;
+}
+
+.confirm-button {
+    height: 30px;
+    border-radius: 10px;
+    color: white;
+    background-color: green;
+    font-size: 14px;
+    align-items: center;
+}
