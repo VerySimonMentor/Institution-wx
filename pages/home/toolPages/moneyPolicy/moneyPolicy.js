@@ -36,7 +36,7 @@ Page({
     const loginTocken = wx.getStorageSync('loginTocken');
     const that = this;
     wx.request({
-      url: app.globalData.domain + '/wx/getCountryDetail?loginTocken=' + loginTocken + '&searchContent=' + searchContent + '&countryListIndex=' + this.data.selectedCountryIndex + '&selectedProvinceMap' + JSON.parse(this.data.selectedProvinceMap) + '&selectedSchoolTypeMap' + JSON.parse(this.data.selectedSchoolTypeMap),
+      url: app.globalData.domain + '/wx/getCountryDetail?loginTocken=' + loginTocken + '&searchContent=' + searchContent + '&countryListIndex=' + this.data.selectedCountryIndex + '&selectedProvinceMap' + JSON.stringify(this.data.selectedProvinceMap) + '&selectedSchoolTypeMap' + JSON.stringify(this.data.selectedSchoolTypeMap),
       method: 'GET',
       success: function(res){
         that.setData({
