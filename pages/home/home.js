@@ -7,6 +7,9 @@ Page({
     inputPasswordAgain: '',
     phoneNumber: '',
   },
+  onShow: function() {
+    wx.hideHomeButton();
+  },
   onLoad: function(options) {
     const app = getApp();
     this.setData({
@@ -45,15 +48,24 @@ Page({
     this.setData({
       pageIndex: 1,
     });
+    wx.setNavigationBarTitle({
+      title: '首页',
+    });
   },
   onTapStudent(e) {
     this.setData({
       pageIndex: 2,
     });
+    wx.setNavigationBarTitle({
+      title: '学生',
+    });
   },
   onTapMessage(e) {
     this.setData({
       pageIndex: 3,
+    });
+    wx.setNavigationBarTitle({
+      title: '消息',
     });
   },
   onTapMy(e) {
@@ -142,6 +154,38 @@ Page({
   onTapContactUs(e) {
     wx.navigateTo({
       url: '/pages/home/toolPages/contactUs/contactUs',
+      success: function(res){
+        // success
+      },
+    });
+  },
+  onTapContractManage(e) {
+    wx.navigateTo({
+      url: '/pages/home/toolPages/contractManage/contractManage',
+      success: function(res){
+        // success
+      },
+    });
+  },
+  onTapBankAccount(e) {
+    wx.navigateTo({
+      url: '/pages/home/toolPages/bankAccount/bankAccount',
+      success: function(res){
+        // success
+      },
+    });
+  },
+  onTapMyIncome(e) {
+    wx.navigateTo({
+      url: '/pages/home/toolPages/myIncome/myIncome',
+      success: function(res){
+        // success
+      },
+    });
+  },
+  onTapMoneyPolicy(e) {
+    wx.navigateTo({
+      url: '/pages/home/toolPages/moneyPolicy/moneyPolicy',
       success: function(res){
         // success
       },

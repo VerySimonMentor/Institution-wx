@@ -4,7 +4,11 @@
     "pages/home/home",
     "pages/home/toolPages/password/password",
     "pages/home/toolPages/feedback/feedback",
-    "pages/home/toolPages/contactUs/contactUs"
+    "pages/home/toolPages/contactUs/contactUs",
+    "pages/home/toolPages/contractManage/contractManage",
+    "pages/home/toolPages/bankAccount/bankAccount",
+    "pages/home/toolPages/myIncome/myIncome",
+    "pages/home/toolPages/moneyPolicy/moneyPolicy"
   ],
   "window": {
     "navigationBarTextStyle": "black",
