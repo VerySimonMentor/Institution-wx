@@ -30,9 +30,13 @@ Page({
   },
   onTapCountry(e) {
     var countryListIndex = e.currentTarget.dataset.index;
+    var emptyMap = {};
     this.setData({
       selectedCountryIndex: countryListIndex,
+      allProvinceMap: emptyMap,
+      allSchoolTypeMap: emptyMap,
     });
+    console.log(this.data.selectedProvinceMap);
     this.onConfirmSchoolName({detail: {value: ''}});
   },
   onConfirmSchoolName(e) {

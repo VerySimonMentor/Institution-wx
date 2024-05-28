@@ -1,3 +1,15 @@
+/* .page {
+    display: flex;
+} */
+
+.fixed-container {
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    background-color: white;
+    height: 150rpx;
+}
+
 .country-scroll {
     white-space: nowrap;
 }
@@ -23,7 +35,6 @@
 }
 
 .search-container {
-    position: relative;
     width: 100%;
     height: 60rpx;
     display: flex;
@@ -45,11 +56,17 @@
     background-color: transparent;
 }
 
-/* .filter-menu {
+.filter-menu {
+    width: 100%;
     position: absolute;
     z-index: 1;
     background-color: white;
-} */
+}
+
+.module {
+    height: 500rpx;
+    /* height: 100%; */
+}
 
 .module-title{
     display: flex;
@@ -181,11 +198,13 @@
 }
 
 .title-text {
+    font-size: 30rpx;
     color: rgb(206, 206, 206);
     flex: 1;
 }
 
 .title-text.first {
+    font-size: 30rpx;
     margin-left: 20rpx;
 }
 
@@ -195,7 +214,15 @@
 }
 
 .item-text.first {
+    font-size: 30rpx;
     margin-left: 10rpx;
     margin-bottom: 20rpx;
 }
 
+.background {
+    height: 150rpx;
+}
+
+.background-big {
+    height: 650rpx;
+}
