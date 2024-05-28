@@ -1,0 +1,81 @@
+.school-block {
+    border: 1rpx solid rgb(228, 228, 228);
+    border-radius: 30rpx;
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+    margin-top: 20rpx;
+    background: linear-gradient(to bottom, rgb(208, 255, 252), white); /* 设置内部为浅绿色渐变 */
+}
+
+.school-detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.school-chiName-text {
+    font-weight: 550;
+    margin-left: 60rpx;
+    margin-top: 10rpx;
+    font-size: 40rpx;
+}
+
+.school-name-and-province {
+    display: flex;
+    justify-content: space-between;
+}
+
+.school-province-text {
+    margin-left: auto;
+    margin-right: 40rpx;
+    margin-top: 15rpx;
+}
+
+.school-engName-text {
+    margin-left: 60rpx;
+    margin-top: 10rpx;
+    color: rgb(206, 206, 206);
+}
+
+.school-link-text {
+    margin-left: 60rpx;
+    margin-top: 10rpx;
+    color: rgb(255, 206, 206);
+}
+
+.school-type-text {
+    margin-left: 60rpx;
+    margin-top: 10rpx;
+    color: rgb(255, 255, 255);
+    background-color: rgb(123, 187, 29);
+    border-radius: 30rpx;
+    align-self: flex-start;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+    margin-bottom: 10rpx;
+}
+
+.item-block {
+    border: 4rpx solid black;
+    border-radius: 30rpx;
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+    margin-top: 20rpx;
+    background-color: rgb(228, 228, 228);
+}
+
+.item-view {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.title-text {
+    margin-left: 20rpx;
+    margin-top: 7rpx;
+    margin-bottom: 7rpx;
+}
+
+.item-text { 
+    margin-right: 20rpx;
+    margin-top: 7rpx;
+    margin-bottom: 7rpx;
+}

@@ -19,7 +19,7 @@
   <view class="module">
     <text class="module-title">省份</text>
     <view class="all-item-container">
-      <view wx:for="{{provinceList}}" wx:for-index="provinceListIndex" wx:key="*this" data-index="{{provinceListIndex}}" bindtap="onTapProvince">
+      <view wx:for="{{provinceList}}" wx:for-index="provinceListIndex" wx:key="chiName" data-index="{{provinceListIndex}}" bindtap="onTapProvince">
         <view wx:if="{{allProvinceMap[provinceListIndex]}}" class="item-selected">
           <text class="item-text">{{item.chiName}}</text>
         </view>
@@ -31,7 +31,7 @@
 
     <text class="module-title">学校类型</text>
     <view class="all-item-container">
-      <view wx:for="{{schoolTypeList}}" wx:for-index="schoolTypeListIndex" wx:key="*this" data-index="{{schoolTypeListIndex}}" bindtap="onTapSchoolType">
+      <view wx:for="{{schoolTypeList}}" wx:for-index="schoolTypeListIndex" wx:key="schoolTypeName" data-index="{{schoolTypeListIndex}}" bindtap="onTapSchoolType">
         <view wx:if="{{allSchoolTypeMap[schoolTypeListIndex]}}" >
           <text class="item-selected">{{item.schoolTypeName}}</text>
         </view>
@@ -43,8 +43,36 @@
     <view class="button-container">
       <view class="action-buttons">
         <button class="action-button.cancel" bindtap="onTapCancel">取消</button>
+        <button class="action-button.clear" bindtap="onTapClear">清空</button>
         <button class="action-button.confirm" bindtap="onTapConfirm">确认</button>
       </view>
     </view>
   </view>
+</view>
+
+<view class="country-detail-container">
+  <view wx:for="{{countryDetail}}" wx:key="id" wx:for-index="schoolIndex">
+    <view class="school-block" bindtap="onTapSchoolDetail" data-index="{{schoolIndex}}">
+      <view class="school-detail">
+        <text class="school-chiName-text">{{item.schoolChiName}}</text>
+        <text class="school-engName-text">{{item.schoolEngName}}</text>
+        <text class="school-type-text">{{item.schoolType}}</text>
+      </view>
+      <view class="item-title">
+        <view class="line"></view>
+        <view class="title-view">
+          <text class="title-text.first">课程名称</text>
+          <text class="title-text.second">返佣比例</text>
+        </view>
+      </view>
+      <view wx:for="{{item.countryItems}}" wx:key="ItemName">
+        <view class="item-view">
+          <text class="item-text.first">{{item.itemName}}</text>
+          <text class="item-text">{{item.itemDetail}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
 </view>

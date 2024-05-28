@@ -11,6 +11,7 @@ Page({
     selectedProvinceMap: {},
     selectedSchoolTypeMap: {},
     searchContent: '',
+    countryDetail: [],
   },
   onLoad: function (options) {
     const app = getApp();
@@ -32,6 +33,7 @@ Page({
     this.setData({
       selectedCountryIndex: countryListIndex,
     });
+    this.onConfirmSchoolName({detail: {value: ''}});
   },
   onConfirmSchoolName(e) {
     const searchContent = e.detail.value;
@@ -39,13 +41,14 @@ Page({
     const loginTocken = wx.getStorageSync('loginTocken');
     const that = this;
     wx.request({
-      url: app.globalData.domain + '/wx/getCountryDetail?loginTocken=' + loginTocken + '&searchContent=' + searchContent + '&countryListIndex=' + this.data.selectedCountryIndex + '&selectedProvinceMap' + encodeURIComponent(JSON.stringify(this.data.selectedProvinceMap)) + '&selectedSchoolTypeMap' + encodeURIComponent(JSON.stringify(this.data.selectedSchoolTypeMap)),
+      url: app.globalData.domain + '/wx/getCountryDetail?loginTocken=' + loginTocken + '&searchContent=' + searchContent + '&countryListIndex=' + this.data.selectedCountryIndex + '&selectedProvinceMap=' + encodeURIComponent(JSON.stringify(this.data.selectedProvinceMap)) + '&selectedSchoolTypeMap=' + encodeURIComponent(JSON.stringify(this.data.selectedSchoolTypeMap)),
       method: 'GET',
       success: function(res){
         that.setData({
           schoolList: res.data.countryDetail,
           schoolTypeList: res.data.schoolType,
           provinceList: res.data.province,
+          countryDetail: res.data.countryDetail,
         });
       }
     });
@@ -109,4 +112,28 @@ Page({
       searchContent: e.detail.value,
     });
   },
+  onTapClear(e) {
+    this.setData({
+      selectedProvinceMap: {},
+      selectedSchoolTypeMap: {},
+    });
+    for (let key in this.data.allProvinceMap) {
+      this.data.allProvinceMap[key] = false;
+    }
+    for (let key in this.data.allSchoolTypeMap) {
+      this.data.allSchoolTypeMap[key] = false;
+    }
+    
+    this.setData({
+      allProvinceMap: this.data.allProvinceMap,
+      allSchoolTypeMap: this.data.allSchoolTypeMap
+    });
+  },
+  onTapSchoolDetail(e) {
+    
+    const school = this.data.countryDetail[e.currentTarget.dataset.index];
+    wx.navigateTo({
+      url: '/pages/home/toolPages/moneyPolicy/itemDetail/itemDetail?schoolJson=' + JSON.stringify(school),
+    });
+  }
 })

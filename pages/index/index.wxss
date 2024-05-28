@@ -70,3 +70,10 @@ page {
   text-decoration: underline;
   margin-top: 20vw;
 }
+
+.login-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-top: 100px;
+}

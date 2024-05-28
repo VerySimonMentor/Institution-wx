@@ -17,7 +17,7 @@
         <navigator class="link">隐私政策</navigator>
         <text>》</text>
       </view>
-      <image class="logo" src="./images/logo.png" bind:tap="onTapFastLogin"></image>
+      <image class="login-image" src="./images/MaterialSymbolsPerson2OutlineRounded.svg" bind:tap="onTapFastLogin"></image>
     </view>
   </view>
   <view class="not-login">
@@ -39,7 +39,7 @@
       <navigator class="link">隐私政策</navigator>
       <text>》</text>
     </view>
-    <image class="logo" src="./images/logo.png" bind:tap="onTapInputLogin"></image>
+    <image class="login-image" src="./images/MaterialSymbolsPasskeyOutlineRounded.svg" bind:tap="onTapInputLogin"></image>
   </view>
   <view class="not-login">
     <text bind:tap="onTapNotLogin">暂不登录</text>

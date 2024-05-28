@@ -17,7 +17,10 @@
     </view>
     <text class="text">我的工具</text>
     <view class="user-tools">
-      <text class="text" bind:tap="onTapContactUs">联系我们</text>
+      <view bind:tap="onTapContactUs" class="tool-view">
+        <image class="image" src="./images/MaterialSymbolsHeadsetMicOutlineRounded.svg"></image>
+        <text class="text">联系我们</text>
+      </view>
     </view>
   </view>
 
@@ -35,10 +38,22 @@
     </view>
     <text class="text">我的工具</text>
     <view class="user-tools">
-      <text class="text" bind:tap="onTapFeedback">意见反馈</text>
-      <text class="text" bind:tap="onTapResetPassword">重置密码</text>
-      <text class="text" bind:tap="onTapQuitAccount">账号退出</text>
-      <text class="text" bind:tap="onTapContactUs">联系我们</text>
+      <view bind:tap="onTapFeedback" class="tool-view">
+        <image class="image" src="./images/MaterialSymbolsCommentOutlineRounded.svg"></image>
+        <text class="text">意见反馈</text>
+      </view>
+      <view bind:tap="onTapResetPassword" class="tool-view">
+        <image class="image" src="./images/MaterialSymbolsPasskeyOutlineRounded.svg"></image>
+        <text class="text">重置密码</text>
+      </view>
+      <view bind:tap="onTapQuitAccount">
+        <image class="image" src="./images/MaterialSymbolsExitToAppRounded.svg"></image>
+        <text class="text">账号退出</text>
+      </view>
+      <view bind:tap="onTapContactUs" class="tool-view">
+        <image class="image" src="./images/MaterialSymbolsHeadsetMicOutlineRounded.svg"></image>
+        <text class="text">联系我们</text>
+      </view>
     </view>
   </view>
 
@@ -49,13 +64,34 @@
     </view>
     <text class="text">我的工具</text>
     <view class="user-tools">
-      <text class="text" bind:tap="onTapFeedback">意见反馈</text>
-      <text class="text" bind:tap="onTapResetPassword">重置密码</text>
-      <text class="text" bind:tap="onTapQuitAccount">账号退出</text>
-      <text class="text" bind:tap="onTapContactUs">联系我们</text>
-      <text class="text" bind:tap="onTapContractManage">合同管理</text>
-      <text class="text" bind:tap="onTapBankAccount">银行账户</text>
-      <text class="text" bind:tap="onTapMyIncome">我的收入</text>
+      <view bind:tap="onTapFeedback" class="tool-view">
+        <image class="image" src="./images/MaterialSymbolsCommentOutlineRounded.svg"></image>
+        <text class="text">意见反馈</text>
+      </view>
+      <view bind:tap="onTapResetPassword" class="tool-view">
+        <image class="image" src="./images/MaterialSymbolsPasskeyOutlineRounded.svg"></image>
+        <text class="text">重置密码</text>
+      </view>
+      <view bind:tap="onTapQuitAccount" class="tool-view">
+        <image class="image" src="./images/MaterialSymbolsExitToAppRounded.svg"></image>
+        <text class="text">账号退出</text>
+      </view>
+      <view bind:tap="onTapContactUs" class="tool-view">
+        <image class="image" src="./images/MaterialSymbolsHeadsetMicOutlineRounded.svg"></image>
+        <text class="text">联系我们</text>
+      </view>
+      <view bind:tap="onTapContractManage" class="tool-view">
+        <image class="image" src="./images/MaterialSymbolsContractOutline.svg"></image>
+        <text class="text">合同管理</text>
+      </view>
+      <view bind:tap="onTapBankAccount" class="tool-view">
+        <image class="image" src="./images/MaterialSymbolsCreditCardOutline.svg"></image>
+        <text class="text">银行账户</text>
+      </view>
+      <view bind:tap="onTapMyIncome" class="tool-view">
+        <image class="image" src="./images/MaterialSymbolsCurrencyExchangeRounded.svg"></image>
+        <text class="text">我的收入</text>
+      </view>
     </view>
   </view>
 </view>
@@ -66,6 +102,9 @@
 
 <view wx:elif="{{pageIndex==1}}">
   <view class="user-tools" wx:if="{{loginState==2}}">
-    <text class="text" bind:tap="onTapMoneyPolicy">佣金政策</text>
+    <view bind:tap="onTapMoneyPolicy" class="tool-view">
+      <image class="image" src="./images/MaterialSymbolsPriceChangeOutlineRounded.svg"></image>
+      <text class="text">佣金政策</text>
+    </view>
   </view>
 </view>

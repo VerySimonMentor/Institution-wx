@@ -4,28 +4,28 @@
 
 .country-item {
     display: inline-block;
-    padding: 10px;
+    padding: 10rpx;
 }
 
 .country-item-selected {
     color: rgb(123, 187, 29);
-    padding-bottom: 5px;
-    border-bottom: 2px solid rgb(123, 187, 29);
-    font-size: 20px;
+    padding-bottom: 10rpx;
+    border-bottom: 2rpx solid rgb(123, 187, 29);
+    font-size: 40rpx;
     font-weight: 550;
-    margin-left: 10px;
+    margin-left: 10rpx;
 }
 
 .country-item-unselected {
-    font-size: 20px;
+    font-size: 40rpx;
     font-weight: 550;
-    margin-left: 10px;
+    margin-left: 20rpx;
 }
 
 .search-container {
     position: relative;
     width: 100%;
-    height: 40px;
+    height: 60rpx;
     display: flex;
     align-items: center;
 }
@@ -33,17 +33,23 @@
 .search-input {
     width: 100%;
     height: 100%;
-    padding-left: 20px;
-    border-radius: 20px;
+    padding-left: 40rpx;
+    border-radius: 40rpx;
     background-color: #f3f3f3;
     flex-grow: 1;
     margin-left: 20px;
 }
 
 .filter-button {
-    margin-left: 10px;
+    margin-left: 10rpx;
     background-color: transparent;
 }
+
+/* .filter-menu {
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+} */
 
 .module-title{
     display: flex;
@@ -64,16 +70,15 @@
 .item {
     display: inline-flex;
     padding: 10rpx;
-    border-radius: 10rpx;
+    border-radius: 30rpx;
     margin: 10rpx;
-    display: inline-flex;
-    background-color: gray;
+    background-color: rgb(228, 228, 228);
 }
 
 .item-selected {
     display: inline-flex;
     padding: 10rpx;
-    border-radius: 10rpx;
+    border-radius: 30rpx;
     margin: 10rpx;
     background-color: green;
     color: white;
@@ -84,7 +89,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: 20rpx;
 }  
 
@@ -101,14 +105,97 @@
 .action-button.cancel {
     background-color: gray;
     color: white;
-    margin-right: 70rpx;
-    margin-left: 70rpx;
+    margin-right: 10rpx;
+    margin-left: 10rpx;
+}
+
+.action-button.clear {
+    background-color: rgb(233, 82, 82);
+    color: white;
+    margin-right: 10rpx;
+    margin-left: 10rpx;
 }
 
 .action-button.confirm {
     background-color: green;
     color: white;
-    margin-left: 70rpx;
-    margin-right: 70rpx;
+    margin-left: 10rpx;
+    margin-right: 10rpx;
 }
-/* ation按钮设置结束 */
+
+.school-block {
+    border: 1rpx solid rgb(228, 228, 228);
+    border-radius: 30rpx;
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+    margin-top: 20rpx;
+    background: linear-gradient(to bottom, rgb(208, 255, 252), white); /* 设置内部为浅绿色渐变 */
+}
+
+.school-detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.school-chiName-text {
+    font-weight: 550;
+    margin-left: 60rpx;
+    margin-top: 10rpx;
+    font-size: 40rpx;
+}
+
+.school-engName-text {
+    margin-left: 60rpx;
+    margin-top: 10rpx;
+    color: rgb(206, 206, 206);
+}
+
+.school-type-text {
+    margin-left: 60rpx;
+    margin-top: 10rpx;
+    color: rgb(255, 255, 255);
+    background-color: rgb(123, 187, 29);
+    border-radius: 30rpx;
+    align-self: flex-start;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+}
+
+.line {
+    height: 5rpx; /* 设置线的高度 */
+    background-color: rgb(228, 228, 228); /* 设置线的颜色 */
+    margin-top: 20rpx;
+    margin-bottom: 10rpx;
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+}
+
+.item-title {
+    display: flex;
+    flex-direction: column;
+}
+
+.title-view {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.title-text {
+    color: rgb(206, 206, 206);
+    flex: 1;
+}
+
+.title-text.first {
+    margin-left: 20rpx;
+}
+
+.item-view {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.item-text.first {
+    margin-left: 10rpx;
+    margin-bottom: 20rpx;
+}
+
