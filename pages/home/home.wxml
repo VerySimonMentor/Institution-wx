@@ -1,12 +1,36 @@
 <view class="footer">
-  <view class="tab" wx:if="{{pageIndex==1}}" class="activeFoot">首页</view>
-  <view class="tab" bind:tap="onTapHome" wx:else>首页</view>
-  <view class="tab" wx:if="{{pageIndex==2}}" class="activeFoot">学生</view>
-  <view class="tab" bind:tap="onTapStudent" wx:else>学生</view>
-  <view class="tab" wx:if="{{pageIndex==3}}" class="activeFoot">消息</view>
-  <view class="tab" bind:tap="onTapMessage" wx:else>消息</view>
-  <view class="tab" wx:if="{{pageIndex==4}}" class="activeFoot">我的</view>
-  <view class="tab" bind:tap="onTapMy" wx:else>我的</view>
+  <view class="tab" wx:if="{{pageIndex==1}}" class="activeFoot">
+    <image class="foot-image" src="./images/MaterialSymbolsHomeOutlineRounded.svg"></image>
+    <text>首页</text>
+  </view>
+  <view class="tab" bind:tap="onTapHome" wx:else>
+    <image class="foot-image" src="./images/MaterialSymbolsHomeOutlineRounded.svg"></image>
+    <text>首页</text>
+  </view>
+  <view class="tab" wx:if="{{pageIndex==2}}" class="activeFoot">
+    <image class="foot-image" src="./images/PhStudent.svg"></image>
+    <text>学生</text>
+  </view>
+  <view class="tab" bind:tap="onTapStudent" wx:else>
+    <image class="foot-image" src="./images/PhStudent.svg"></image>
+    <text>学生</text>
+  </view>
+  <view class="tab" wx:if="{{pageIndex==3}}" class="activeFoot">
+    <image class="foot-image" src="./images/HugeiconsMessage02.svg"></image>
+    <text>消息</text>
+  </view>
+  <view class="tab" bind:tap="onTapMessage" wx:else>
+    <image class="foot-image" src="./images/HugeiconsMessage02.svg"></image>
+    <text>消息</text>
+  </view>
+  <view class="tab" wx:if="{{pageIndex==4}}" class="activeFoot">
+    <image class="foot-image" src="./images/SimpleIconsAboutdotme.svg"></image>
+    <text>我的</text>
+  </view>
+  <view class="tab" bind:tap="onTapMy" wx:else>
+    <image class="foot-image" src="./images/SimpleIconsAboutdotme.svg"></image>
+    <text>我的</text>
+  </view>
 </view>
 
 <view wx:if="{{pageIndex==4}}">
